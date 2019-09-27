@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types'
 import SwapiService from '../../services/swapi-service';
 import Spinner from '../spinner';
 import ErrorIndicator from '../error-indikator';
@@ -7,6 +7,11 @@ import ErrorIndicator from '../error-indikator';
 import './random-planet.css';
 
 export default class RandomPlanet extends Component {
+
+  static propTypes = {
+    updateInterval: PropTypes.number.isRequired
+  }
+
   swapiService = new SwapiService();
 
   state = {
@@ -15,10 +20,11 @@ export default class RandomPlanet extends Component {
   };
 
   componentDidMount() {
+    const { updateInterval } = this.props
     this.updatePlanet();
     this.interval = setInterval(() => {
       return this.updatePlanet();
-    }, 5000);
+    }, updateInterval);
   }
   componentWillUnmount() {
     clearInterval(this.interval);
@@ -63,6 +69,11 @@ export default class RandomPlanet extends Component {
     );
   }
 }
+
+RandomPlanet.defaultProps = {
+  updateInterval: 5000
+}
+
 
 const PlanetView = ({ planet }) => {
   const { id, name, population, rotationPeriod, diameter } = planet;
