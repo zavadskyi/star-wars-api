@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ThrowError from '../throw-error/throw-error';
 
 import './item-details.css';
 
@@ -67,7 +66,6 @@ export default class ItemDetails extends Component {
             return  React.cloneElement(child, {item});
            })}
           </ul>
-          <ThrowError />
         </div>
       </div>
     );
