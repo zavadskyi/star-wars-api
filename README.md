@@ -1,2 +1,2 @@
 ## StarWars
-[Demo](https://zavadskyi.github.io/star-wars-app/)
+[Demo](https://serhiizavadskyi.github.io/star-wars-app/)
